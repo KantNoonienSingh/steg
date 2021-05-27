@@ -22,12 +22,12 @@ separate files.
 
 
 Usage: steg {--encode|--decode|-h}
-   -f<encoded-image-source>  [-o<output-file>]
-  [-t<output-file-type>]
-   -k<crypt-key-file>
-   -v<init-vec-file>
-  [-i<message-file>]
-  [-b]
+              -f<encoded-image-source>  [-o<output-file>]
+             [-t<output-file-type>]
+              -k<crypt-key-file>
+              -v<init-vec-file>
+             [-i<message-file>]
+             [-b]
 
   --encode                     Encoding mode
   --decode                     Decoding mode

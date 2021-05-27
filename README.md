@@ -24,13 +24,13 @@ separate files.
 
 <pre>
 Usage: steg {--encode|--decode|-h}
-   -f&lt;encoded-image-source&gt;
-  [-o&lt;output-file&gt;]
-  [-t&lt;output-file-type&gt;]
-   -k&lt;crypt-key-file&gt;
-   -v&lt;init-vec-file&gt;
-  [-i&lt;message-file&gt;]
-  [-b]
+              -f&lt;encoded-image-source&gt;
+             [-o&lt;output-file&gt;]
+             [-t&lt;output-file-type&gt;]
+              -k&lt;crypt-key-file&gt;
+              -v&lt;init-vec-file&gt;
+             [-i&lt;message-file&gt;]
+             [-b]
 
   --encode                     Encoding mode
   --decode                     Decoding mode

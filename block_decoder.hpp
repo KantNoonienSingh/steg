@@ -1,7 +1,6 @@
 /* block_decoder.hpp -- v1.0 -- facade for decoding message and writing result to output
    Author: Sam Y. 2021 */
 
-
 #ifndef _BLOCK_DECODER_HPP
 #define _BLOCK_DECODER_HPP
 

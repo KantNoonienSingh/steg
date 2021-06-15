@@ -6,17 +6,15 @@
 
 namespace steg {
     /// Encodes string to base64
-    /// @param value: padded input string [in]
-    /// @param size: data size [in]
-    /// @param output: output string, padded to necessary base64 expansion [out]
-    void base64_encode(const char* const value,
-                       const std::size_t size,
-                       char* output);
+    /// @param value    padded input string [in]
+    /// @param size     data size [in]
+    /// @param output   output string, padded to necessary base64 expansion [out]
+    void base64_encode(const char* const value, const std::size_t size, char* output);
 
     /// Decodes string (in-place) from base64
-    /// @param value: input string [in/out]
-    /// @param size: data size [in]
-    /// @return number of bytes decoded
+    /// @param value    input string [in/out]
+    /// @param size     data size [in]
+    /// @return         number of bytes decoded
     std::size_t base64_decode(char* const value, const std::size_t size);
 }
 

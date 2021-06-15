@@ -7,30 +7,29 @@
 #include "decoder.hpp"
 
 namespace steg {
-    // @class
+    //! @class block_decoder
     template <bool b64,
               typename Talloc>
     class block_decoder : private decoder {
     public:
 
-        /// Factory method
-        /// @param AES key
-        /// @param initvec: initialization vector
-        /// @return a block decoder on success, null on failure
+        /// Factory method, returns a block_decoder
+        /// @param key       AES key string
+        /// @param initvec   initialization vector string
         inline static block_decoder* create(const char* const key, const char* const initvec);
 
         /// Decodes input message and writes to output
-        /// @param inp: input stream
-        /// @param out: output stream
-        /// @param return: gcrypt return code
+        /// @param inp       input stream
+        /// @param out       output stream
+        /// @param return    gcrypt return code
         template <typename Tinp,
                   typename Tout>
         inline bool run(Tinp& inp, Tout& out);
 
     private:
 
-        // Helper
-        // Generates a digest from the message
+        /*! Helper
+         */
         template <typename Tout,
                   bool vvb64 = b64>
         inline bool decode_digest(Tout& out,
@@ -45,8 +44,8 @@ namespace steg {
             return ret;
         }
 
-        // Helper
-        // Generates a digest from the message and encodes it base64
+        /*! Generates a digest from the message and encodes it base64
+         */
         template <typename Tout,
                   bool vvb64 = b64>
         inline bool decode_digest(Tout& out,
@@ -66,13 +65,14 @@ namespace steg {
             return ret;
         }
 
-        // ctor.
-        // Use factory method create()
+        /*! ctor. Private, use factory method create() instead
+         */
         inline explicit block_decoder(cipher*&& cph) : decoder(cph) {  }
     };
 
-    /* ! Factory method
-     */
+    /// Factory method, returns block decoder
+    /// @param key        AES key string
+    /// @param initvec    initialization vector string
     template <bool b64,
               typename Talloc>
     block_decoder<b64, Talloc>* block_decoder<b64, Talloc>::create(const char* const key,
@@ -85,8 +85,10 @@ namespace steg {
         return new block_decoder(std::move(cph));
     }
 
-    /*! Encrypts input message and writes to output
-     */
+    /// Encrypts input message and writes to output
+    /// @param inp    input stream
+    /// @param out    output stream
+    /// @return       boolean flag indicating success or failure
     template <bool b64,
               typename Talloc>
     template <typename Tinp,

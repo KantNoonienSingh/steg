@@ -14,22 +14,32 @@ namespace steg {
 
         /// dtor.
         virtual ~encoder();
+
         /// ctor.
-        /// @param cph: the cipher implementation
+        /// @param cph    the cipher implementation
         inline explicit encoder(cipher* cph) : cph_(cph) {  }
+
+
         /// Encodes data in-place
-        /// @param data: string (padded to a multiple of the cipher block length)
-        /// @param size: size of string
-        /// @return true on success, false otherwise
+        /// @param data    input buffer, padded to a multiple of the cipher block length
+        /// @param size    size of input buffer
+        /// @return        true on succss, false otherwise
         bool encode(char* const data, std::size_t size);
+
+        /// Encodes data
+        /// @param data       input buffer, padded to a multiple of the cipher block length
+        /// @param size       size of input buffer
+        /// @param out        output buffer, will contain result of encoding operation
+        /// @param outSize    size of output buffer
+        /// @return           true on succss, false otherwise
         bool encode(const char* const data, const std::size_t size, char* const out, const std::size_t outSize);
 
-        /// @return encapsulated cipher
+        /// @return    encapsulated cipher
         inline cipher* get() {
             return cph_;
         }
 
-        /// @return encapsulated cipher
+        /// @return    encapsulated cipher
         inline const cipher* get() const {
             return cph_;
         }

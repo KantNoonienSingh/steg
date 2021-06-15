@@ -6,7 +6,8 @@
 
 namespace steg {
 
-    // @class singleton
+    /// @class error
+    /// error logger, implements singleton pattern
     class error {
     public:
 
@@ -20,6 +21,8 @@ namespace steg {
             return !error::instance_ ? instance_ : new error();
         }
 
+        /*! Logs input arguments
+         */
         template <typename ... T>
         void log(const char* first, const T ... args) {
             // Print to output
@@ -30,17 +33,21 @@ namespace steg {
 
     private:
 
-        // Base case
+        /*! Base case
+         */
         void log() {
             print("\n");
         }
 
+        /*! Prints log to stderr output
+         */
         void print(const char* str);
 
-        // ctor. private, use get() to get the singleton handle
+        /*! ctor. private, use get() to get the singleton handle
+         */
         error();
-        // The singleton instance
-        static error* instance_;
+
+        static error* instance_; // > the singleton instance
     };
 }
 

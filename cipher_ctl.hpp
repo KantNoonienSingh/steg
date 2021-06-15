@@ -9,12 +9,13 @@ namespace steg {
     struct cipher;
 
     /// Closes cipher and deallocates memory
+    /// @param cipher    class
     void cipher_close(cipher& cipher);
 
-    /// Factory method, used for class initialization
-    /// @param key: AES key
-    /// @param initvec: initialization vector
-    /// @return on success, return a non-null pointer to an initialized object
+    /// Factory method, used for cipher initialization
+    /// @param key        AES key string
+    /// @param initvec    initialization vector string
+    /// @return           on success, returns a non-null pointer to an initialized cipher
     cipher* cipher_init(const char* const key, const char* const initvec);
 }
 

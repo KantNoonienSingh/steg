@@ -9,56 +9,57 @@ namespace steg {
     class image {
     public:
 
-        // Image file type
+        /// Type of image file
         enum image_type { NIL, PNG, BMP, TGA };
 
         /// dtor.
         ~image();
+
         /// ctor.
         image();
+
         /// ctor.
-        /// No copy ctor. defined; this is a non-copyable object
+        /// No copy ctor. defined, this is a non-copyable object
         explicit image(image&& other);
-        /// assignment
-        /// No copy assignment operator defined; this is a non-copyable object
+
+        /// Assignment operator
+        /// No copy assignment operator defined, this is a non-copyable object
         image& operator=(image&& other);
 
-        /// @return the size of the message
+        /// @return    the size of the message
         std::size_t size() const;
 
-        /// Save file
-        /// @param path: output file descriptor
-        /// @param type: output image file type
-        /// @return true on success, false otherwise
+        /// Saves file
+        /// @param path    output image path
+        /// @param type    output image file type
+        /// @return        true on success, false otherwise
         bool save(const char* path, const image_type type) const;
 
-        /// Load file
-        /// @param path: path/to/output/file
-        /// @return image size
+        /// Loads file
+        /// @param path    path/to/image/file
+        /// @return        image size
         std::size_t open(const char* path);
 
         /// Reads message from image
-        /// @param buff: unallocated output buffer [out]
-        /// @param buffSize: size of buff [in]
-        /// @return number of bytes read
+        /// @param buff[out]    unallocated output buffer
+        /// @param buffSize     size of buff 
+        /// @return             number of bytes read
         std::size_t read(char* buff, const std::size_t buffSize);
 
         /// Writes message to image
-        /// @param image: raw, unencoded image [out]
-        /// @param buff: input message [in]
-        /// @param buffSize: input message size [in]
-        /// @return number of bytes written
+        /// @param buff        input message [in]
+        /// @param buffSize    input message size [in]
+        /// @return            number of bytes written
         std::size_t write(const char* buff, const std::size_t buffSize);
 
     private:
 
-        // Not copyable
+        // Non-copyable
         explicit image(image&) = delete;
         explicit image(const image&) = delete;
 
         // Image data
-        unsigned
-        char* data_;
+        unsigned char* data_;
 
         // Image width, height, no. of channels
         int w_, h_, nchanns_;

@@ -5,7 +5,7 @@
 #define _CIPHER_HPP
 
 namespace steg {
-    // @datatype
+    /// @class cipher
     struct cipher {
         // Handle to cipher
         void* hd;
